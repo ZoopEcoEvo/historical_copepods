@@ -1,0 +1,20 @@
+Digitizing Wilson 1932
+
+Information about each site is found in Appendix A (page 534). This information will be used to populate the 'site_data' file. 
+The columns are as follows: 
+site - the given site name. This will be used to link the species occurrence data to locations
+region - the general area (e.g. Woods Hole, Falmouth, Cape Cod, etc.)
+description - the description provided in the text (should be copied exactly)
+salinity - the general salinity category (fresh, brackish, salt) from the description
+lat - the inferred latitude of the pond
+long - the inferred longitude of the pond
+notes - other useful notes or comments about this site
+
+Information from the species descriptions will populate the 'species_occurrence' file. 
+There are only two columns in this file: 
+species - the given species name (note: this may have been changed since the publication of this book; we will handle corrections programmatically at a later time)
+site - the locations listed in the Occurrence section of each species description 
+
+Note: several of the species were collected from sites not listed in Appendix A. In these cases, you should add the sites to the 'site_data' file. In the notes column, include the species/page the location was mentioned
+
+Protocol: 
