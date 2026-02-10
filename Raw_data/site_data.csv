@@ -8,7 +8,7 @@ Fresh Pond,Woods Hole,A small pond close to the ocean on the road leading from W
 Lily Pond,Woods Hole,A very small pond filled with waterlilies just north of Nobska Lighthouse.,,,fresh water,
 Nobska Point,Woods Hole,,,,salt water,DIAPTOMUS MINUTUS (p.92)
 Ice Pond,Falmouth,"A small pond north of Quissett Harbor, shallow and full of vegetation.",,,fresh water,
-Flax Pond,Falmouth,"Another small pond still farther north, also shallow and full of vegetation.",,,fresh water,
+Flax Pond (1),Falmouth,"Another small pond still farther north, also shallow and full of vegetation.",,,fresh water,
 Lily Pond,Falmouth,A small pond filled with waterlillies close to the shore of Buzzards Bay and just south of the Falmouth Arms Hotel.,,,fresh water,
 Crockers Pond,Falmouth,"Situated north of West Falmouth Village, of medium size and quite deep, without much vegetation.",,,fresh water,
 Sidleys Pond,Falmouth,"Situated in Falmouth Village, of medium size and fairly deep, with much marginal vegetation.",,,fresh water,
@@ -22,23 +22,23 @@ Lily Pond,Falmouth,"South of Ashumet Pond, small in size and very shallow, choke
 Oyster Pond,Falmouth,"On the shore of Vineyard Sound, half a mile long, quater of a mile wide, filled with floating algae.",,,0.214,
 Salt Pond,Falmouth,"On the shore of Vineyard Sound east of Oyster Pond, its outer end opening into the ocean.",,,0.36,
 Little Pond,Falmouth,"On the shore of Vineyard Sound east of Falmouth Heights, a mile long, the outer end opening into the ocean, the inner end recieving a large brook, the pond filled with water bloom.",,,fresh water,
-Great Pond,Falmouth,"On the shore of Vineyard Sound, 2 miles long by half a mile wide, the outer end open to the ocean, the inner end recieving a large stream;vegetation rather limited",,,fresh water to salt water,
+Great Pond (1),Falmouth,"On the shore of Vineyard Sound, 2 miles long by half a mile wide, the outer end open to the ocean, the inner end recieving a large stream;vegetation rather limited",,,fresh water to salt water,
 Green Pond,Falmouth,"On the shore of Vineyard Sound, 2 miles long, quarter of a mile wide, the outer end open to the ocean, the inner end recieving the outlet og East Falmouth Pond.",,,fresh water to salt water,
 Waquoit Bay,Falmouth,"On the shore of Vineyard Sound, 2 miles long, a mile wide, the outer end open to the ocean, the inner end recieving the Quostinet River and a large brook.",,,fresh water to salt water,
 Eel Pond,Falmouth,"West of Waquoit Bay and connected with it by a wide outlet, and recieving at its upper end the Childs River, the outlet of John Pond",,,fresh water to brackish water,
 Lower Cotuit Pond,Barnstable,"Three-fourths of a mile long, one-fourth of a mile wide, rather deep and free from vegetation.",,,fresh water,
 Middle Cotuit Pond,Barnstable,"Tliree-fourths of a mile long. one-fourth of a mile wide, rather shallow and full of vegetation.",,,fresh water,
 Upper Cotuit Pond,Barnstable,"One mile long, half a mile  wide, deep and free from vegetation.",,,fresh water,
-Chequaquet Lake (Great Pond),Barnstable,"Two miles long and two miles wide, deep and free from vegetation.",,,fresh water,
+Chequaquet Lake (Great Pond (2)),Barnstable,"Two miles long and two miles wide, deep and free from vegetation.",,,fresh water,
 Lovells Pond,Barnstable,"A circular pond a third of a mile in diameter and quite deep, with only a little vegetation.",,,fresh water,
-Long Pond,"Newton Village, Barnstable","Three-quarters of a mile long, quarter of a mile wide, quite deep and free from vegetation.",,,fresh water,
-Crescent Lake (Long Pond),"Centerville, Barnstable","Half a mile long, quarter of a mile wide, deep and free from vegetation.",,,fresh water,
+Long Pond (1),"Newton Village, Barnstable","Three-quarters of a mile long, quarter of a mile wide, quite deep and free from vegetation.",,,fresh water,
+Crescent Lake (Long Pond (2)),"Centerville, Barnstable","Half a mile long, quarter of a mile wide, deep and free from vegetation.",,,fresh water,
 Shallow Pond,Barnstable,"East of Great Pond, triangular, half a mile across, shallow and choked with vegetation.",,,fresh water,
-Long Pond,Brewster,"Two and a half miles long, 1 mile wide, quite deep and free from vegetation.",,,fresh water,
+Long Pond (3),Brewster,"Two and a half miles long, 1 mile wide, quite deep and free from vegetation.",,,fresh water,
 Seymour Pond (Bangs Pond),Brewster,"Circular, half a mile in  diameter, quite deep and free from vegetation.",,,fresh water,
 Pleasant Lake (Hinckleys Pond),Harwich,"Elliptical, half a milg in diameter, quite deep and free from vegetation.",,,fresh water,
 Round Pond,Barnstable,rather small and full of all kinds of vegetation.,,,fresh water,In Barnstable east of Lower Cotuit Pond
-Flax Pond,Bourne,"quarter of a mile in diameter, and fairly clear of vegetation.",,,fresh water,between North Pocasset and South Pocasset
+Flax Pond (2),Bourne,"quarter of a mile in diameter, and fairly clear of vegetation.",,,fresh water,between North Pocasset and South Pocasset
 Red Brook Pond,Bourne,"formed by a dam across Red Brook, shallow and filled with vegetation.",,,fresh water,In Bourne at South Pocasset
 Ashumet Pond,Mashpee,"a mile long, half a mile wide, deep and clear.",,,fresh water,In Mashpee west of John Pond
 John Pond,Mashpee,"A mile and a half long and half a mile wide, comparatively free from vegetation.",,,fresh water ,
@@ -46,7 +46,7 @@ Outlet Pond,Mashpee,A pond only 100 feet in diameter close to the outlet to John
 Mashpee Pond (Wakeby Pond),Mashpee,"Really the two ends of the same pond, connected by a wide channel, filled with water bloom.",,,fresh water,
 Santuit Pond,Mashpee,"a mile long, half a mile wide, and full of vegetation.",,,fresh water,
 Scargo Lake,Dennis Village,"three-quarters of a mile long, half a mile wide, deep and clear.",,,fresh water,
-Flax Pond,Dennis,a very small and weedy pond.,,,fresh water,"In Dennis, north of Follins Pond, at the head of Bass River,"
+Flax Pond (3),Dennis,a very small and weedy pond.,,,fresh water,"In Dennis, north of Follins Pond, at the head of Bass River,"
 Clear Pond,Chatham,"very small, with few water plants.",,,fresh water,"Beside the road from Chatham to South Chatham,"
 Weedy Pond,Chatham,also very small and choked with vegetation.,,,fresh water,Not far from the preceding pond
 Rams Head Pond,"Elizabeth Islands (Rams Head Island, Hadley Harbor)",Small and full of water plants of all kinds.,,,fresh water,
@@ -58,5 +58,10 @@ French Watering Place,Elizabeth Islands (Naushon Island),Of medium size and free
 West End Pond,Elizabeth Islands (Naushon Island),"Circular, quarter of a mile in diameter and very shallow, with considerable vegetation.",,,fresh water,
 East End Pond,Elizabeth Islands (Nashawena Island),"Of medium size, shallow, and choked with vegetation.",,,fresh water,
 Cuttyhunk,Elizabeth Islands (Cuttyhunk Island),,,,salt/brackish,DIAPTOMUS SANGUINEUS (p. 93)
-Long Pond,Newton,,,,fresh water,DIAPTOMUS MINUTUS (p. 92)
-Unnamed Pond (3),Marthas Vineyard,small pond of  fresh water west of Edgartown on Marthas Vineyard,,,fresh water,DIAPTOMUS LEPTOPUS (p.94)
+Long Pond (4),Newton,,,,fresh water,DIAPTOMUS MINUTUS (p. 92)
+small pond of fresh water west of Edgartown on Marthas Vineyard,Marthas Vineyard,small pond of  fresh water west of Edgartown on Marthas Vineyard,,,fresh water,DIAPTOMUS LEPTOPUS (p.94)
+small lily pond south of Ashumet Pond,Mashpee,,,,,"DIAPTOMUS SPATULOCRENATUS (p.97), EPISCHURA NEVADENSIS"
+small pond near outlet of John Pond,Mashpee,,,,,DIAPTOMUS SPATULOCRENATUS (p.97)
+small lily pond just south of Falmouth Arms Hotel,Falmouth,,,,,DIAPTOMUS BIRGEI (p.98)
+small lily pond north of Nobska Lighthouse,Woods Hole,,,,,DIAPTOMUS BIRGEI (p.98)
+pond beside State road,Falmouth,,,,,
