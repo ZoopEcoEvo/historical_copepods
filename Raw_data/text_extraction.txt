@@ -18,3 +18,5 @@ site - the locations listed in the Occurrence section of each species descriptio
 Note: several of the species were collected from sites not listed in Appendix A. In these cases, you should add the sites to the 'site_data' file. In the notes column, include the species/page the location was mentioned
 
 Protocol: 
+
+The species name was written in the species column in the 'species_occurenece' file. Then, using the 'occurrence' section, the locations where the species is found was written in the 'site' column. Each location in this section was then cross referenced with those listed in Appendix A. Locations mentioned that were not in Appendix A were added to the 'site_data' file, along with all necessary information. The species name and page number is then added to the 'notes' column. This process is repeated for each species.
