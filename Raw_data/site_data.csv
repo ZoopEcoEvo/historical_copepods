@@ -7,7 +7,7 @@ Mill Pond,Woods Hole,Within the village of Woods Hole and filled with blanket al
 Fresh Pond,Woods Hole,A small pond close to the ocean on the road leading from Woods Hole to Nobska Lighthouse ; vegetation rather limited.,,,0.4993,
 Lily Pond,Woods Hole,A very small pond filled with waterlilies just north of Nobska Lighthouse.,,,fresh water,
 Nobska Point,Woods Hole,,,,salt water,DIAPTOMUS MINUTUS (p.92)
-Ice Pond,Falmouth,"A small pond north of Quissett Harbor, shallow and full of vegetation.",,,fresh water,
+Ice Pond (1),Falmouth,"A small pond north of Quissett Harbor, shallow and full of vegetation.",,,fresh water,
 Flax Pond (1),Falmouth,"Another small pond still farther north, also shallow and full of vegetation.",,,fresh water,
 Lily Pond,Falmouth,A small pond filled with waterlillies close to the shore of Buzzards Bay and just south of the Falmouth Arms Hotel.,,,fresh water,
 Crockers Pond,Falmouth,"Situated north of West Falmouth Village, of medium size and quite deep, without much vegetation.",,,fresh water,
@@ -59,7 +59,7 @@ West End Pond,Elizabeth Islands (Naushon Island),"Circular, quarter of a mile in
 East End Pond,Elizabeth Islands (Nashawena Island),"Of medium size, shallow, and choked with vegetation.",,,fresh water,
 Rams Head Pond,Hadley Harbor (Rams Head Island),Small and full of water plant of all kinds,,,fresh water,
 Pond at southern end of Penikese Island,Elizabeth Islands (Penikese Island),"Small, very shallow and muddy, without vegetation",,,fresh water,
-Ice Pond,Elizabeth Islands (Cuttyhunk Island),"About 50 feet in diameter, very shallow and choked with vegetation",,,fresh water,
+Ice Pond (2),Elizabeth Islands (Cuttyhunk Island),"About 50 feet in diameter, very shallow and choked with vegetation",,,fresh water,
 Lower Gosnold Pond,Elizabeth Islands (Cuttyhunk Island),Opening into the ocean at its southern end and rather free from vegetation,,,brackish,
 Upper Gosnold Pond,Elizabeth Islands (Cuttyhunk Island),"Separated from Lower Gosnold Pond by a bank of earth 40 feet wide, and full of vegetation",,,fresh water,
 Cuttyhunk Pond,Elizabeth Islands (Cuttyhunk Island),"The harbor of the island, open to the ocean, and very shallow except in the channel",,,salt water,
@@ -101,3 +101,7 @@ two of the small ponds on the road from Woods Hole to Falmouth,Woods Hole / Falm
 Scargo Pond,Dennis,,,,,MESOCYCLOPS OBSOLETUS (p. 330)
 two small ponds beside the main road west of Chatham,Chatham,,,,,"MESOCYCLOPS OBSOLETUS (p. 330), MACROCYCLOPS ALBIDUS (p. 335)"
 pond on Rams Head Island,Elizabeth Islands (Rams Head Island),,,,fresh water,"MESOCYCLOPS OBSOLETUS (p. 330), MACROCYLOPS FUSCUS (p. 333), MACROCYCLOPS ALBIDUS (p. 335), PARACYCLOPS FIMBRIATUS (p. 342)"
+most freshwater ponds on the Elizabeth Islands,Elizabeth Islands,,,,fresh water,EUCYCLOPS AGILIS (p.338)
+two small ponds on Marthas Vineyard,Marthas Vineyard,,,,fresh water,EUCYCLOPS AGILIS (p.338)
+most freshwater ponds along Cape Cod to Chatham,Cape Code / Chatham,,,,fresh water,EUCYCLOPS AGILIS (p.338)
+all the freshwater ponds in and around Woods Hole,Woods Hole,,,,fresh water,EUCYCLOPS AGILIS (p.338)
