@@ -82,3 +82,113 @@ theme_matt_facets = function(base_size = 18,
     )
 }
 ```
+
+## Historical Temperature Data
+Daily temperature data was retrieved from the National Centers for Environmental Information from three sites in Boston - Station USW00094701 in Boston, Station USC00191097 in Cambridge, and Station USW00014739 at Boston Logan International Airport. Only maximum and minimum daily temperatures were recorded for the historical data (<1950). To assemble a complete data record, daily maximum and minimum values were first averaged for each day to account for temporal overlap between the data sets. The mid-point between the minimum and maximum was then used a proxy for the daily mean temperature. 
+
+This method produced reasonable estimates for the daily mean temperature. There was a tight correlation between estimated and observed mean daily temperatures. 
+
+```{r}
+ggplot(temp_record, aes(x = mean, y = mean_est)) + 
+  geom_abline(slope = 1) + 
+  geom_point() + 
+  geom_smooth() + 
+  labs(x = "Observed Mean Temp. (°C)",
+       y = "Estimated Mean Temp. (°C)") + 
+  theme_matt()
+```
+
+
+```{r}
+cor.test(x = temp_record$mean_est, y = temp_record$mean)
+```
+
+The temperature record suggests distinct warming in Eastern Massachusetts since the 1880s. 
+
+```{r}
+temp_record %>%  
+  drop_na(mean_est) %>% 
+  group_by(year) %>%  
+  summarise(ann_mean = mean(mean_est, na.rm = T),
+            ann_max = max(max, na.rm = T),
+            ann_min = min(min, na.rm = T)) %>% 
+  filter(year != max(year) & year != min(year)) %>% 
+  pivot_longer(cols = c(ann_mean:ann_min), 
+               names_to = "metric", 
+               values_to = "temp") %>% 
+  filter(metric == "ann_mean") %>% 
+ggplot(aes(x = year, y = temp)) + 
+  geom_point() + 
+  geom_smooth() +
+  labs(x = "Year", 
+       y = "Temperature (°C)") + 
+  theme_matt() + 
+  theme(legend.position = "right")
+
+# ggplot(temp_record, aes(x = date, y = mean_est)) + 
+#   geom_line() + 
+#   geom_smooth(colour = "red") + 
+#   theme_minimal() + 
+#   theme(panel.grid = element_blank())
+```
+
+```{r}
+
+database %>% 
+  select(species, region) %>%
+  distinct() %>% 
+  group_by(region) %>% 
+  count() %>% 
+  drop_na() %>% 
+  ungroup() %>% 
+  mutate(region = fct_reorder(region, n)) %>% 
+  ggplot(aes(x = region, y = n)) + 
+  geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 300, vjust= 0.5, hjust = 0))
+
+database %>% 
+  group_by(species) %>% 
+  count() %>% 
+  drop_na() %>% 
+  ungroup() %>% 
+  mutate(species = fct_reorder(species, n)) %>% 
+  ggplot(aes(x = species, y = n)) + 
+  geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 300, vjust = 0.5, hjust = 0))
+
+
+database %>% 
+  group_by(species, region) %>% 
+  count() %>% 
+  drop_na() %>% 
+  ungroup() %>% 
+  count(species) %>% 
+  mutate(species = fct_reorder(species, n)) %>% 
+  ggplot(aes(x = species, y = n)) + 
+  geom_bar(stat = 'identity') + 
+  theme(axis.text.x = element_text(angle = 300, vjust = 0.5, hjust = 0))
+```
+
+```{r}
+
+# Download County Subdivision shapefiles for MA
+# Using county subdivisions (cousub) usually provides better coastal detail
+ma_map <- county_subdivisions(state = "MA", cb = TRUE, class = "sf")
+
+ggplot(data = ma_map) +
+  geom_sf(fill = "lightblue", color = "lightblue") +
+  theme_minimal() +
+  geom_point(data = drop_na(database, lat), aes(x = long, y = lat, colour = confidence),
+             size = 1) + 
+  scale_colour_manual(values = c("high" = "black",
+                                 "low" = "grey50",
+                                 "medium" = "grey80")) + 
+  coord_sf(xlim = c(-69.85, -71.1),
+           ylim = c(41.2,42.1)) + 
+  labs(x = "Longitude",
+       y = "Latitude") +
+  theme(panel.grid.major = element_line(color = "gray90", linewidth = 0.5))
+
+```
+
+
