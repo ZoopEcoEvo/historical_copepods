@@ -84,11 +84,11 @@ theme_matt_facets = function(base_size = 18,
 ```
 
 ## Historical Temperature Data
-Daily temperature data was retrieved from the National Centers for Environmental Information from three sites in Boston - Station USW00094701 in Boston, Station USC00191097 in Cambridge, and Station USW00014739 at Boston Logan International Airport. Only maximum and minimum daily temperatures were recorded for the historical data (<1950). To assemble a complete data record, daily maximum and minimum values were first averaged for each day to account for temporal overlap between the data sets. The mid-point between the minimum and maximum was then used a proxy for the daily mean temperature. 
+Daily temperature data was retrieved from the National Centers for Environmental Information from three sites in Boston (Station USW00094701 in Boston, Station USC00191097 in Cambridge, and Station USW00014739 at Boston Logan International Airport) and a site in Hyannis. Only maximum and minimum daily temperatures were recorded for the historical data (<1950). To assemble a complete data record, daily maximum and minimum values were first averaged for each day to account for temporal overlap between the data sets. The mid-point between the minimum and maximum was then used a proxy for the daily mean temperature. 
 
 This method produced reasonable estimates for the daily mean temperature. There was a tight correlation between estimated and observed mean daily temperatures. 
 
-```{r}
+```{r est-mean-corr}
 ggplot(temp_record, aes(x = mean, y = mean_est)) + 
   geom_abline(slope = 1) + 
   geom_point() + 
@@ -99,25 +99,27 @@ ggplot(temp_record, aes(x = mean, y = mean_est)) +
 ```
 
 
-```{r}
+```{r corr-test}
 cor.test(x = temp_record$mean_est, y = temp_record$mean)
 ```
 
-The temperature record suggests distinct warming in Eastern Massachusetts since the 1880s. 
+The temperature record suggests distinct warming in Eastern Massachusetts since the 1880s. While the temperature record is more sparse, there also seems to have been substantial record on Cape Cod, especially over the past 50 years. 
 
-```{r}
+```{r ann-mean-change}
 temp_record %>%  
   drop_na(mean_est) %>% 
-  group_by(year) %>%  
+  group_by(year, location) %>%  
   summarise(ann_mean = mean(mean_est, na.rm = T),
             ann_max = max(max, na.rm = T),
             ann_min = min(min, na.rm = T)) %>% 
+  ungroup(year) %>% 
   filter(year != max(year) & year != min(year)) %>% 
   pivot_longer(cols = c(ann_mean:ann_min), 
                names_to = "metric", 
                values_to = "temp") %>% 
   filter(metric == "ann_mean") %>% 
 ggplot(aes(x = year, y = temp)) + 
+  facet_wrap(location~.) + 
   geom_point() + 
   geom_smooth() +
   labs(x = "Year", 
@@ -125,15 +127,13 @@ ggplot(aes(x = year, y = temp)) +
   theme_matt() + 
   theme(legend.position = "right")
 
-# ggplot(temp_record, aes(x = date, y = mean_est)) + 
-#   geom_line() + 
-#   geom_smooth(colour = "red") + 
-#   theme_minimal() + 
-#   theme(panel.grid = element_blank())
 ```
 
-```{r}
+## Taxonomic Diversity
 
+The number of species varies across regions, but is generally correlated with the region area / number of sites sampled. 
+
+```{r region-diversity, fig.width=9, fig.height=5}
 database %>% 
   select(species, region) %>%
   distinct() %>% 
@@ -144,8 +144,14 @@ database %>%
   mutate(region = fct_reorder(region, n)) %>% 
   ggplot(aes(x = region, y = n)) + 
   geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 300, vjust= 0.5, hjust = 0))
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 15)) + 
+  theme_matt() +
+  theme(axis.text.x = element_text(size = 15))
+```
 
+It's clear, however, that the species recorded vary in their distributions, with species occurrences ranging from `r reframe(count(database, species), range(n))[1,1]` to `r reframe(count(database, species), range(n))[2,1]` sites. 
+
+```{r species-occurrence, fig.width=8, fig.height=8}
 database %>% 
   group_by(species) %>% 
   count() %>% 
@@ -154,39 +160,60 @@ database %>%
   mutate(species = fct_reorder(species, n)) %>% 
   ggplot(aes(x = species, y = n)) + 
   geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 300, vjust = 0.5, hjust = 0))
-
-
-database %>% 
-  group_by(species, region) %>% 
-  count() %>% 
-  drop_na() %>% 
-  ungroup() %>% 
-  count(species) %>% 
-  mutate(species = fct_reorder(species, n)) %>% 
-  ggplot(aes(x = species, y = n)) + 
-  geom_bar(stat = 'identity') + 
-  theme(axis.text.x = element_text(angle = 300, vjust = 0.5, hjust = 0))
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 15)) + 
+  coord_flip() + 
+  theme_matt() + 
+  theme(axis.text.y = element_text(size = 10, lineheight = 0.7))
 ```
 
-```{r}
+```{r site-map, fig.width=8, fig.height=8}
 
 # Download County Subdivision shapefiles for MA
 # Using county subdivisions (cousub) usually provides better coastal detail
 ma_map <- county_subdivisions(state = "MA", cb = TRUE, class = "sf")
 
 ggplot(data = ma_map) +
-  geom_sf(fill = "lightblue", color = "lightblue") +
+  geom_sf(fill = "grey80", color = "grey80") +
   theme_minimal() +
   geom_point(data = drop_na(database, lat), aes(x = long, y = lat, colour = confidence),
              size = 1) + 
-  scale_colour_manual(values = c("high" = "black",
-                                 "low" = "grey50",
-                                 "medium" = "grey80")) + 
+  scale_color_viridis_d(option = "G") + 
+  # scale_colour_manual(values = c("high" = "black",
+  #                                "medium" = "grey50",
+  #                                "low" = "grey80")) + 
   coord_sf(xlim = c(-69.85, -71.1),
            ylim = c(41.2,42.1)) + 
   labs(x = "Longitude",
        y = "Latitude") +
+  theme(panel.grid.major = element_line(color = "gray90", linewidth = 0.5))
+
+```
+
+## Potential Sites for Resampling 
+
+```{r high-conf-sites}
+database %>%  
+  filter(confidence == "high" & salinity == "fresh water" & region %in% c("Cape Cod", "Falmouth", "Woods Hole")) %>% 
+  select(species, site, lat, long, region) %>% 
+  count(site, lat, long, name = "species") %>% 
+  arrange(species) %>% 
+  knitr::kable()
+```
+
+For logistical reasons, we will focus resurveying efforts on high confidence mainland freshwater sites (within Cape Cod, Falmouth, or Woods Hole). These `r dim(resurveys)[1]` sites are shown below. The number of species described at each site are indicated by the color of the point. 
+
+```{r high-conf-site-map, fig.width=8, fig.height=8}
+
+ggplot(data = ma_map) +
+  geom_sf(fill = "grey80", color = "grey80") +
+  theme_minimal() +
+  geom_point(data = resurveys, aes(x = long, y = lat, colour = species),
+             size = 3) + 
+  coord_sf(xlim = c(-69.85, -71.1),
+           ylim = c(41.2,42.1)) + 
+  labs(x = "Longitude",
+       y = "Latitude") +
+  scale_colour_viridis_b(option = "E") + 
   theme(panel.grid.major = element_line(color = "gray90", linewidth = 0.5))
 
 ```
