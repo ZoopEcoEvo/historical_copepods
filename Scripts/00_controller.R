@@ -68,8 +68,22 @@ if(process_data == T){
 temp_record = read.csv(file = "Output/Output_data/temp_record.csv") %>% 
   mutate(date = as_date(date))
 
+biogeo = read.csv(file = "Raw_data/range_distributions.csv") %>% 
+  mutate(low_lim = str_split_i(range_classification, pattern = "\\+ ", i = -1),
+         affinity = case_when(
+           low_lim == "N" ~ "Cold", 
+           low_lim == "T" ~ "Temperate", 
+           low_lim == "W" ~ "Warm"
+         )) %>% 
+  select("species" = updated_species, affinity) %>% 
+  mutate(species = if_else(species == "Mesocyclops obsoletus", "Mesocyclops edax", species),
+    affinity = if_else(species == "Mesocyclops edax", "Warm", affinity))
+  
 database = read.csv(file = "Output/Output_data/occurrence_database.csv") %>% 
-  mutate(confidence = fct_relevel(confidence, "high", "medium", "low"))
+  mutate(confidence = fct_relevel(confidence, "high", "medium", "low")) %>% 
+  mutate(species = if_else(species == "Mesocyclops obsoletus", "Mesocyclops edax", species)) %>% 
+  inner_join(biogeo, by = "species") %>% 
+  filter(!(species %in% c("Eurytemora lacustris", "Eurytemora hirundoides")))
 
 if(make_report == T){
   library(sf)
