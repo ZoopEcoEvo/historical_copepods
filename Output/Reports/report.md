@@ -1,6 +1,6 @@
 Historical Copepods Communities of the Woods Hole Region
 ================
-2026-08-04
+2026-08-10
 
 - [Historical Temperature Data](#historical-temperature-data)
 - [Taxonomic Diversity](#taxonomic-diversity)
@@ -33,7 +33,7 @@ ggplot(temp_record, aes(x = mean, y = mean_est)) +
   theme_matt()
 ```
 
-<img src="../Figures/markdown/est-mean-corr-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/est-mean-corr-1.png" alt="" style="display: block; margin: auto;" />
 
 ``` r
 cor.test(x = temp_record$mean_est, y = temp_record$mean)
@@ -78,11 +78,11 @@ temp_record %>%
   theme(legend.position = "right")
 ```
 
-<img src="../Figures/markdown/ann-mean-change-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/ann-mean-change-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Taxonomic Diversity
 
-The Wilson text describes the distributions of 19 species across 74
+The Wilson text describes the distributions of 18 species across 72
 sites.
 
 The number of species varies across regions, but is generally correlated
@@ -104,7 +104,7 @@ database %>%
   theme(axis.text.x = element_text(size = 15))
 ```
 
-<img src="../Figures/markdown/region-diversity-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/region-diversity-1.png" alt="" style="display: block; margin: auto;" />
 
 It’s clear, however, that the species recorded vary in their
 distributions, with species occurrences ranging from 1 to 41 sites.
@@ -124,10 +124,10 @@ database %>%
   theme(axis.text.y = element_text(size = 10, lineheight = 0.7))
 ```
 
-<img src="../Figures/markdown/species-occurrence-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/species-occurrence-1.png" alt="" style="display: block; margin: auto;" />
 
-We were able to relocate many of the 74 sites described in the text, but
-with varying levels of confidence. Roughly 2/3 of the sites (54) were
+We were able to relocate many of the 72 sites described in the text, but
+with varying levels of confidence. Roughly 2/3 of the sites (53) were
 identified with medium to high confidence.
 
 ``` r
@@ -153,7 +153,7 @@ ggplot(data = ma_map) +
         text = element_text(size = 18))
 ```
 
-<img src="../Figures/markdown/site-map-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/site-map-1.png" alt="" style="display: block; margin: auto;" />
 
 We compiled biogeographic data for each species, and used this to
 examine the climatic affinity for each of the reconstructed communities.
@@ -162,7 +162,7 @@ examine the climatic affinity for each of the reconstructed communities.
 
 database %>% 
   group_by(site) %>% 
-  mutate(prop_warm = sum(affinity == "Warm", na.rm = TRUE) / n()) %>%  
+  mutate(prop_warm = sum(affinity == "W", na.rm = TRUE) / n()) %>%  
   ungroup() %>% 
   mutate(site = fct_reorder(site, prop_warm)) %>% 
   arrange(site) %>% 
@@ -174,7 +174,7 @@ database %>%
   theme(axis.text.x = element_blank())
 ```
 
-<img src="../Figures/markdown/climate-affinities-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/climate-affinities-1.png" alt="" style="display: block; margin: auto;" />
 
 ## Potential Sites for Resampling
 
@@ -194,27 +194,22 @@ resurveys %>%
 
 | site                           |      lat |      long | species |
 |:-------------------------------|---------:|----------:|--------:|
-| Browns Pond (Spectacle Pond)   | 41.58780 | -70.59263 |       3 |
-| Jenkins Pond                   | 41.59633 | -70.58525 |       3 |
-| Lovells Pond                   | 41.64846 | -70.44194 |       3 |
-| Mares Pond                     | 41.58843 | -70.59809 |       3 |
+| Crescent Lake (Long Pond (2))  | 41.65581 | -70.33640 |       3 |
+| Jones Pond                     | 41.56220 | -70.60679 |       3 |
+| Long Pond (1)                  | 41.66732 | -70.44426 |       3 |
+| Long Pond (3)                  | 41.72509 | -70.06419 |       3 |
 | Mashpee Pond (Wakeby Pond)     | 41.66421 | -70.48627 |       3 |
-| Mill Pond                      | 41.52849 | -70.67188 |       3 |
+| Red Brook Pond                 | 41.67801 | -70.60864 |       3 |
 | Salt Pond                      | 41.54250 | -70.62701 |       3 |
-| Crescent Lake (Long Pond (2))  | 41.65581 | -70.33640 |       4 |
-| Jones Pond                     | 41.56220 | -70.60679 |       4 |
-| Long Pond (1)                  | 41.66732 | -70.44426 |       4 |
-| Long Pond (3)                  | 41.72509 | -70.06419 |       4 |
+| Seymour Pond (Bangs Pond)      | 41.72436 | -70.09312 |       3 |
+| John Pond                      | 41.62797 | -70.51989 |       4 |
 | Oyster Pond                    | 41.53975 | -70.63824 |       4 |
-| Red Brook Pond                 | 41.67801 | -70.60864 |       4 |
-| Seymour Pond (Bangs Pond)      | 41.72436 | -70.09312 |       4 |
-| John Pond                      | 41.62797 | -70.51989 |       5 |
-| Pleasant Lake (Hinckleys Pond) | 41.71307 | -70.08944 |       5 |
-| Crockers Pond                  | 41.61685 | -70.62473 |       7 |
+| Pleasant Lake (Hinckleys Pond) | 41.71307 | -70.08944 |       4 |
+| Crockers Pond                  | 41.61685 | -70.62473 |       6 |
 
 For logistical reasons, we will focus resurveying efforts on high
 confidence mainland freshwater sites (within Cape Cod, Falmouth, or
-Woods Hole). These 17 sites are shown below. The number of species
+Woods Hole). These 12 sites are shown below. The number of species
 described at each site are indicated by the color of the point, ranging
 from three to seven.
 
@@ -234,7 +229,7 @@ ggplot(data = ma_map) +
         text = element_text(size = 18))
 ```
 
-<img src="../Figures/markdown/high-conf-site-map-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/high-conf-site-map-1.png" alt="" style="display: block; margin: auto;" />
 
 The biogeographic affinities for the proposed re-sampled sites are shown
 below.
@@ -257,4 +252,4 @@ ggplot(aes(x = site, fill = affinity)) +
   theme(axis.text.x = element_blank())
 ```
 
-<img src="../Figures/markdown/high-conf-affinities-1.png" style="display: block; margin: auto;" />
+<img src="../Figures/markdown/high-conf-affinities-1.png" alt="" style="display: block; margin: auto;" />

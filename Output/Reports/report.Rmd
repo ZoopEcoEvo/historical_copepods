@@ -82,9 +82,9 @@ theme_matt_facets = function(base_size = 18,
     )
 }
 
-affinity_cols = c("Temperate" = "#53a24e", 
-                  "Warm" = "#a52a2a", 
-                  "Cold" = "#02439e")
+affinity_cols = c("T" = "#53a24e", 
+                  "W" = "#a52a2a", 
+                  "C" = "#02439e")
 ```
 
 ## Historical Temperature Data
@@ -204,7 +204,7 @@ We compiled biogeographic data for each species, and used this to examine the cl
 
 database %>% 
   group_by(site) %>% 
-  mutate(prop_warm = sum(affinity == "Warm", na.rm = TRUE) / n()) %>%  
+  mutate(prop_warm = sum(affinity == "W", na.rm = TRUE) / n()) %>%  
   ungroup() %>% 
   mutate(site = fct_reorder(site, prop_warm)) %>% 
   arrange(site) %>% 
