@@ -11,12 +11,39 @@ long - the inferred longitude of the pond
 notes - other useful notes or comments about this site
 
 Information from the species descriptions will populate the 'species_occurrence' file. 
-There are only two columns in this file: 
-species - the given species name (note: this may have been changed since the publication of this book; we will handle corrections programmatically at a later time)
+There are only three columns in this file: 
+species - the given species name (note: these may have been changed since the publication of this book; corrections handled programmatically at a later time)
+updated species name - images in the Wilson book were cross-referenced with more recent images; species names were updated
 site - the locations listed in the Occurrence section of each species description 
 
 Note: several of the species were collected from sites not listed in Appendix A. In these cases, you should add the sites to the 'site_data' file. In the notes column, include the species/page the location was mentioned
 
 Protocol: 
 
-The species name was written in the species column in the 'species_occurenece' file. Then, using the 'occurrence' section, the locations where the species is found was written in the 'site' column. Each location in this section was then cross referenced with those listed in Appendix A. Locations mentioned that were not in Appendix A were added to the 'site_data' file, along with all necessary information. The species name and page number is then added to the 'notes' column. This process is repeated for each species.
+- species of interest was recorded in the 'species_occurance' file in the 'species' column
+- the occurrence of said species was copied from the Wilson book into the 'site' column
+- if a species occurs at a site not listed in Appendix A, that site was added to the 'site_data' file
+	- the region, subregion, salinity, and species name and page number where the site was found was also added
+- these steps were repeated for every species
+
+Climate Affinity for Wilson Species
+
+Information about the geographic range of species from the Wilson book will be in the 'range_distributions' file. The columns are as follows:
+updated_species - a direct copy of the 'updated_species' column from the 'species_occurance' file
+range_classification - depending on the lowest latitude of the range, each species is classified as C (cold), T (temperate), or W (warm
+range_description - the geographic bounds of the distribution; range of high to low latitude (e.g. Canada to Mexico, Canada to Kentucky, etc.)
+low_lat_limit - the lowest latitude where the species was described
+high_lat_limit - the highest latitude where the species was described
+
+Protocol:
+
+- for every species in the 'updated_species' column in the 'range_distributions' file, several sources were cross referenced to find the most accurate distribution. These sources were:
+	- Wilson, M.S. & H.C. Yeatman. 1959. Free-Living Copepoda. [in] W.T. Edmondson (ed.). Ward & Whipple Fresh-Water Biology, 2nd edition
+	- Reid, J.W. & C.E. Williamson, Copepoda. [in] J.H. Thorp & A.P. Covich (eds.). Ecology and Classification of North American Freshwater Invertebrates, 3rd edition: 829-899.
+	- “GBIF.” n.d. Accessed August 17, 2026. https://www.gbif.org/. (note: GBIF was only used when the occurrence shown was either DNA sequenced or a preserved specimen from the Smithsonian records)
+- From these sources, the 'low_lat_limit' and 'high_lat_limit' were recorded, and used to determine the 'range_distibution' of each species
+	- the relevant sources where each data point came from were also recorded
+- using the information from the 'range_distibution' column, each species was classified as either C (cold), T (temperate), or W (warm):
+	- cold: lowest latitude limit from Canada to within New England
+	- temperate: lowest latitude limit from below New England to North Carolina
+	- warm: lowest latitude limit below North Carolina
