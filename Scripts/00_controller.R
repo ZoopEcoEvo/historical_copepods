@@ -75,6 +75,8 @@ database = read.csv(file = "Output/Output_data/occurrence_database.csv") %>%
   mutate(confidence = fct_relevel(confidence, "high", "medium", "low")) %>% 
   inner_join(biogeo, by = "species")
 
+write.csv(database, "Output/Output_data/data.base.csv", row.names = F)
+
 if(make_report == T){
   library(sf)
   library(tigris)
